@@ -1,3 +1,4 @@
+//This project covers Decision Structures (While Loops,Conditionals, and System input)
 import java.util.Scanner;
 
 public class Main {
