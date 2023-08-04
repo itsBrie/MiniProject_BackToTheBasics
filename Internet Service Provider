@@ -1,0 +1,55 @@
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        System.out.print("Hello, and Welcome to the Internet Service Provider!" + " " + "We have two packages for you to choose from:\n");
+        System.out.print("Package A: For 9.95 per month, 10 hours of internet access is provided. Additional hours are $2.00 per hour\n" +
+                "Package B: For 13.95 per month,20 hours of internet access is provided. Additional hours are $1.00 per hour");
+        System.out.print("\nPackage C: For 19.95 per month, you receive unlimited internet access. ");
+
+        Scanner input = new Scanner(System.in);
+        System.out.print("\n Please choose your preferred package(Package A,B,C)");
+        String customer_package = input.nextLine().toLowerCase();
+        int customer_hours;
+        while (true) {
+            System.out.print("\nHow many hours of internet do you use every month? (minimum 10 hours)");
+            customer_hours = input.nextInt();
+            if (customer_hours < 10) {
+                continue;
+            } else {
+                break;
+            }
+        }
+        double package_a_total = 9.95 + ((customer_hours-10) * 2);
+        double package_b_total;
+        if (customer_hours<20){
+            package_b_total = 13.95 + ((20-customer_hours) * 1);
+        }
+        else {
+         package_b_total = 13.95 + ((customer_hours-20) * 1);}
+
+        double package_c_total = 19.95;
+
+        switch (customer_package) {
+            case "package a":
+                System.out.printf("You choose Package A, every month you will pay %.2f", package_a_total);
+                break;
+            case "package b":
+                System.out.printf("You choose Package B, every month you will pay %.2f", package_b_total);
+                break;
+            case "package c":
+                System.out.printf("You choose Package C, every month you will pay %.2f", package_c_total);
+            default:
+                break;
+        }
+        if (package_a_total<package_b_total&& package_a_total<package_c_total) {
+            System.out.print("\nPackage A would be the better option");
+        } else if (package_b_total<package_a_total&&package_b_total<package_c_total) {
+            System.out.print("\nPackage B would be the the better option");
+        } else {
+            System.out.print("\nOption C would be the better option");
+        }
+
+
+    }
+}
