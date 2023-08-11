@@ -1,0 +1,39 @@
+import java.util.Scanner;
+
+public class HotelOccupancy {
+    public static void main(String[] args) {
+//Occupancy rate for each floor in a hotel - number of rooms occupied/total number of rooms
+        int roomsOnFloor = 0;
+        int totalFloorsInHotel;
+        int occupiedRoomsOnFloor = 0;
+        int totalRoomsOnFloor = 0;
+        int totalOccupiedRoomsOnFloor = 0;
+        System.out.println("How many floors do you have in the hotel?");
+        Scanner userInput = new Scanner(System.in);
+        totalFloorsInHotel = userInput.nextInt();
+        if (totalFloorsInHotel < 1) {
+            System.out.println("You cannot have less than 1 floor in the hotel");
+            System.exit(0);
+        }
+
+        userInput.nextLine();
+        for (int i = 1; i <= totalFloorsInHotel; i++) {
+            System.out.println("How many rooms are on floor" + " " + i +"? (The number needs to be more than 10)");
+            roomsOnFloor = userInput.nextInt();
+            if (roomsOnFloor < 10) {
+                System.out.println("You cannot have less than 10 rooms per floor");
+                System.exit(0);
+            }
+            totalRoomsOnFloor += roomsOnFloor;
+            System.out.println("How many rooms are occupied? on floor"+" "+ i);
+            occupiedRoomsOnFloor = userInput.nextInt();
+            totalOccupiedRoomsOnFloor += occupiedRoomsOnFloor;
+        }
+        double occupancyRate = (double) totalOccupiedRoomsOnFloor / totalRoomsOnFloor;
+        int vacantRooms = totalRoomsOnFloor - totalOccupiedRoomsOnFloor;
+        System.out.println("This hotel has " + totalRoomsOnFloor +" total rooms");
+        System.out.println(totalOccupiedRoomsOnFloor + " rooms are occupied");
+        System.out.println("There are " + " "+ vacantRooms +" vacant rooms");
+        System.out.printf("The occupancy rate is %.2f percent", occupancyRate*100);
+    }
+}
